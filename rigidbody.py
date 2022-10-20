@@ -19,6 +19,10 @@ class RigidBody:
     def add_velocity(self, vector2):
         self.velocity = (self.velocity[0] + vector2[0], self.velocity[1] + vector2[1])
 
+    def reset_velocity(self):
+        self.reset_velocity_x()
+        self.reset_velocity_y()
+    
     def reset_velocity_x(self):
         self.velocity = (0, self.velocity[1])
 

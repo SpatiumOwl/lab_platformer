@@ -1,11 +1,13 @@
 import pygame
 
+import levels as lvl
 import managers as mgr
 import viewport as vp
 import player as pl
+import userevents
 
 def main():
-    player = pl.Player((2, 5))
+    mgr.WorldManager.reset_level()
 
     run = True
 
@@ -18,9 +20,11 @@ def main():
                 run = False
             if event.type == pygame.KEYDOWN:
                 vp.ViewPort.key_down.append(event.key)
+            if event.type == userevents.UserEvents.PLAYER_DEAD:
+                mgr.WorldManager.reset_level()
 
         mgr.WorldManager.draw_level_tiles()
-        player.update()
+        mgr.WorldManager.player.update()
 
         pygame.display.update()
 
