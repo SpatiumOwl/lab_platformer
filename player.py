@@ -9,7 +9,7 @@ class Player:
     KEY_JUMP = pygame.K_SPACE
 
     RUN_SPEED = 0.04
-    JUMP_FORCE = 0.2
+    JUMP_FORCE = 0.15
     
     COLOR = (150, 150, 150)
     
@@ -43,9 +43,7 @@ class Player:
 
         if (Player.KEY_JUMP in vp.ViewPort.key_down):
             self.rigidbody.reset_velocity_y()
-            self.rigidbody.add_velocity((0, -Player.JUMP_FORCE))
-            
-
+            self.rigidbody.add_velocity((0, -Player.JUMP_FORCE))            
     
     def draw_player(self):
         pygame.draw.rect(vp.ViewPort.WINDOW, self.COLOR, self.collider)

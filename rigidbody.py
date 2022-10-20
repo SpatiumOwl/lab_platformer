@@ -1,3 +1,4 @@
+import math
 import pygame
 
 import physics
@@ -67,17 +68,23 @@ class RigidBody:
                     if (not can_move_fully and not can_move_horizontally and not can_move_vertically):
                         break
             if (can_move_fully):
-                self.collider.x += self.velocity[0] * vp.ViewPort.TILE_SIZE[0]
-                self.collider.y += self.velocity[1] * vp.ViewPort.TILE_SIZE[1]
+                self.collider.x += RigidBody.absolute_trunc(self.velocity[0] * vp.ViewPort.TILE_SIZE[0])
+                self.collider.y += RigidBody.absolute_trunc(self.velocity[1] * vp.ViewPort.TILE_SIZE[1])
             else:
                 if (can_move_horizontally):
-                    self.collider.x += self.velocity[0] * vp.ViewPort.TILE_SIZE[0]
+                    self.collider.x += RigidBody.absolute_trunc(self.velocity[0] * vp.ViewPort.TILE_SIZE[0])
                 else:
                     self.reset_velocity_x()
 
                 if (can_move_vertically):
-                    self.collider.y += self.velocity[1] * vp.ViewPort.TILE_SIZE[1]
+                    self.collider.y += RigidBody.absolute_trunc(self.velocity[1] * vp.ViewPort.TILE_SIZE[1])
                 else:
                     self.reset_velocity_y()
+
+    def absolute_trunc(num):
+        if (num >= 0):
+            return math.trunc(num)
+        else:
+            return -math.trunc(-num)
 
             
