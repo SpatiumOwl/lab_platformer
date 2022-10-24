@@ -21,7 +21,7 @@ def main():
                 mgr.WorldManager.current_level.disable()
                 sfx.SFX.BGM.stop()
                 sfx.SFX.CLOSED_GAME.play()
-                time.sleep(sfx.SFX.CLOSED_GAME.get_length())
+                pygame.time.wait(int(sfx.SFX.CLOSED_GAME.get_length()*1000))
                 run = False
             if event.type == pygame.KEYDOWN:
                 vp.ViewPort.key_down.append(event.key)
@@ -37,7 +37,7 @@ def main():
                 mgr.WorldManager.current_level.disable()
                 sfx.SFX.BGM.stop()
                 sfx.SFX.FINISHED_GAME.play()
-                time.sleep(sfx.SFX.FINISHED_GAME.get_length())
+                pygame.time.wait(int(sfx.SFX.FINISHED_GAME.get_length()*1000))
                 run = False
         if (run):
             mgr.WorldManager.update()

@@ -1,5 +1,4 @@
 import pygame
-import time
 from threading import Thread
 
 import levels as lvl
@@ -35,7 +34,7 @@ class WorldManager:
             thread.start()
 
     def wait_for_next_droplets():
-        time.sleep(WorldManager.LAVA_DROPLET_INTERVAL)
+        pygame.time.wait(WorldManager.LAVA_DROPLET_INTERVAL * 1000)
         WorldManager.can_spawn_lava_droplets = True
     
     def update_lava_droplets():
