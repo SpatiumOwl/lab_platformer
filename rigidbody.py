@@ -13,7 +13,7 @@ class RigidBody:
         self.stationary = stationary
         RigidBody.rb_list.append(self)
     
-    def __del__(self):
+    def delete(self):
         RigidBody.rb_list.remove(self)
     
     def add_velocity(self, vector2):
